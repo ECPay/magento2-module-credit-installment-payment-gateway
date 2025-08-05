@@ -11,43 +11,49 @@ define(
     function (Component) {
         'use strict';
 
-        return Component.extend({
-            defaults: {
-                template: 'Ecpay_CreditInstallmentPaymentGateway/payment/form',
-                ecpayCreditInstallment: ''
-            },
+        return Component.extend(
+            {
+                defaults: {
+                    template: 'Ecpay_CreditInstallmentPaymentGateway/payment/form',
+                    ecpayCreditInstallment: ''
+                },
 
-            initObservable: function () {
+                initObservable: function () {
 
-                this._super()
-                    .observe([
+                    this._super()
+                    .observe(
+                        [
                         'ecpayCreditInstallment'
-                    ]);
-                return this;
-            },
+                        ]
+                    );
+                    return this;
+                },
 
-            getCode: function() {
-                return 'ecpay_credit_installment_gateway';
-            },
+                getCode: function () {
+                    return 'ecpay_credit_installment_gateway';
+                },
 
-            getData: function() {
-                return {
-                    'method': this.item.method,
-                    'additional_data': {
-                        'ecpay_credit_installment': this.ecpayCreditInstallment()
-                    }
-                };
-            },
-
-            getecpayCreditInstallments: function() {
-                // Ecpay\CreditInstallmentPaymentGateway\Model\Ui\ConfigProvider.php
-                return _.map(window.checkoutConfig.payment.ecpay_credit_installment_gateway.ecpayCreditInstallments, function(value, key) {
+                getData: function () {
                     return {
-                        'value': key,
-                        'ecpay_credit_installment': value
-                    }
-                });
+                        'method': this.item.method,
+                        'additional_data': {
+                            'ecpay_credit_installment': this.ecpayCreditInstallment()
+                        }
+                    };
+                },
+
+                getecpayCreditInstallments: function () {
+                    // Ecpay\CreditInstallmentPaymentGateway\Model\Ui\ConfigProvider.php
+                    return _.map(
+                        window.checkoutConfig.payment.ecpay_credit_installment_gateway.ecpayCreditInstallments, function (value, key) {
+                            return {
+                                'value': key,
+                                'ecpay_credit_installment': value
+                            }
+                        }
+                    );
+                }
             }
-        });
+        );
     }
 );

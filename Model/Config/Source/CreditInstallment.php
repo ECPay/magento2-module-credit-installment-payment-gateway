@@ -23,10 +23,12 @@ class CreditInstallment
         // 後台多選格式
         $result = [];
         foreach ($creditInstallments as $key) {
-            array_push($result, [
+            array_push(
+                $result, [
                 'value' => $key,
                 'label' => $this->_paymentService->getCreditInstallmentName($key)
-            ]);
+                ]
+            );
         }
 
         return $result;

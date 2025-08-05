@@ -16,9 +16,11 @@ define(
                 const choosenCreditInstallment = dataDiv.find('select[name="ecpay_credit_installments"]').val();
 
                 var ecpayCreditInstallments = window.checkoutConfig.payment.ecpay_credit_installment_gateway.ecpayCreditInstallments;
-                ecpayCreditInstallments =  _.map(ecpayCreditInstallments, function(value, key) {
-                    return key;
-                });
+                ecpayCreditInstallments =  _.map(
+                    ecpayCreditInstallments, function (value, key) {
+                        return key;
+                    }
+                );
 
                 const found = ecpayCreditInstallments.find(element => element === choosenCreditInstallment);
 

@@ -21,7 +21,7 @@ class DataAssignObserver extends AbstractDataAssignObserver
     ];
 
     /**
-     * @param Observer $observer
+     * @param  Observer $observer
      * @return void
      */
     public function execute(Observer $observer)
